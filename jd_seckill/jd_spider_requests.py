@@ -119,7 +119,7 @@ class QrLogin:
             3、校验票据
         :param spider_session:
         """
-        self.qrcode_img_file = 'qr_code.png'
+        self.qrcode_img_file = '/usr/local/html/qr_code.png'
 
         self.spider_session = spider_session
         self.session = self.spider_session.get_session()

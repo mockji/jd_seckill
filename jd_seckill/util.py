@@ -124,6 +124,20 @@ def save_image(resp, image_file):
         for chunk in resp.iter_content(chunk_size=1024):
             f.write(chunk)
 
+def save_main_html(base_path,image_file_name):
+    htmlContent = """
+    <html>
+        <head>
+            <title>qrcode</title>
+        </head>
+        <body>
+            <img src="./img/{}">
+        </body>
+    </html>
+    """.format(image_file_name)
+    htmlfile = "{}/index.html".format(base_path)
+    with open(htmlfile, 'w') as f:
+        f.write(htmlContent)
 
 def add_bg_for_qr(qr_path):
     try:

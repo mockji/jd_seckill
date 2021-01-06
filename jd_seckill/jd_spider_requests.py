@@ -24,6 +24,7 @@ from .util import (
     response_status,
     save_image,
     open_image,
+    save_main_html,
     add_bg_for_qr,
     email
 
@@ -119,7 +120,10 @@ class QrLogin:
             3、校验票据
         :param spider_session:
         """
-        self.qrcode_img_file = '/usr/local/html/qr_code.png'
+        self.base_path = 'usr/local/html'
+        # self.base_path = '.'
+        self.qrcode_img_file = '{}/img/qr_code_{}.png'.format(self.base_path,time.time())
+        logger.info(self.qrcode_img_file)
 
         self.spider_session = spider_session
         self.session = self.spider_session.get_session()
@@ -183,6 +187,7 @@ class QrLogin:
             return False
 
         save_image(resp, self.qrcode_img_file)
+        save_main_html(self.base_path,os.path.basename(self.qrcode_img_file))
         logger.info('二维码获取成功，请打开京东APP扫描')
 
         open_image(add_bg_for_qr(self.qrcode_img_file))

@@ -19,7 +19,7 @@ class Timer(object):
         #转换为其他日期格式,如:"%Y-%m-%d %H:%M:%S"
         local_now = time.localtime(now)
         time_tody = time.strftime("%Y-%m-%d", local_now)
-        self.buy_time = (datetime.fromisoformat(time_tody) + timedelta(hours=buy_time_delta.tm_hour,minutes=buy_time_delta.tm_min,seconds=buy_time_delta.tm_sec))
+        self.buy_time = (datetime.strptime(time_tody,"%Y-%m-%d") + timedelta(hours=buy_time_delta.tm_hour,minutes=buy_time_delta.tm_min,seconds=buy_time_delta.tm_sec))
 
         self.buy_time_ms = int(time.mktime(self.buy_time.timetuple()) * 1000.0 + self.buy_time.microsecond / 1000)
         self.sleep_interval = sleep_interval

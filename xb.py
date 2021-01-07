@@ -10,7 +10,5 @@ now = int(time.time())
 #转换为其他日期格式,如:"%Y-%m-%d %H:%M:%S"
 local_now = time.localtime(now)
 time_tody = time.strftime("%Y-%m-%d", local_now)
-time_tody_delta = (datetime.fromisoformat(time_tody) + timedelta(hours=buy_time.tm_hour,minutes=buy_time.tm_min,seconds=buy_time.tm_sec))
+time_tody_delta = (datetime.strptime(time_tody,"%Y-%m-%d") + timedelta(hours=buy_time.tm_hour,minutes=buy_time.tm_min,seconds=buy_time.tm_sec))
 print(time_tody_delta)
-
-print(buy_time)

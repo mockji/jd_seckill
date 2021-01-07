@@ -120,8 +120,8 @@ class QrLogin:
             3、校验票据
         :param spider_session:
         """
-        self.base_path = 'usr/local/html'
-        # self.base_path = '.'
+        # self.base_path = 'usr/local/html'
+        self.base_path = '.'
         self.qrcode_img_file = '{}/img/qr_code_{}.png'.format(self.base_path,time.time())
         logger.info(self.qrcode_img_file)
 
@@ -442,6 +442,7 @@ class JdSeckill(object):
         """
         预约
         """
+        self.seckill_canstill_running()
         while True:
             try:
                 self.make_reserve()
@@ -477,6 +478,9 @@ class JdSeckill(object):
             "%Y-%m-%d %H:%M:%S.%f"
         )
         current_time = datetime.now()
+        print("========>")
+        print(stop_time)
+        print(current_time)
         if current_time > stop_time:
             self.running_flag = False
             logger.info('超过允许的运行时间，任务结束。')

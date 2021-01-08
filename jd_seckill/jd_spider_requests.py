@@ -121,8 +121,13 @@ class QrLogin:
         :param spider_session:
         """
         # self.base_path = 'usr/local/html'
-        self.base_path = '.'
-        self.qrcode_img_file = '{}/img/qr_code_{}.png'.format(self.base_path,time.time())
+        self.base_path = './login'
+        self.qrcode_img_file = os.path.join(self.base_path,'qr_code_{}.png'.format(time.time()))
+
+        qrCodeDir = os.path.dirname(self.qrcode_img_file)
+        if not os.path.exists(qrCodeDir):
+            os.makedirs(qrCodeDir)
+
         logger.info(self.qrcode_img_file)
 
         self.spider_session = spider_session

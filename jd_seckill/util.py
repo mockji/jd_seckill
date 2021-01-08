@@ -131,7 +131,7 @@ def save_main_html(base_path,image_file_name):
             <title>qrcode</title>
         </head>
         <body>
-            <img src="./img/{}">
+            <img src="./{}">
         </body>
     </html>
     """.format(image_file_name)
